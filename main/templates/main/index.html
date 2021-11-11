@@ -1,0 +1,36 @@
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Hello World?</h1>
+      <p class="lead">Amonger bread sus potat tomato sheibba sussus</p>
+      <p>Hisock gud. Use or else I cri</p>
+    </div>
+
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-sm-6">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{post.post_title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{post.date_posted}}</h6>
+
+              {% if post.post_description %}
+                <p class="card-text">{{post.post_description}}</p>
+              {% else %}
+                <p class="card-text">{{post.post_content|slice:":100"}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
